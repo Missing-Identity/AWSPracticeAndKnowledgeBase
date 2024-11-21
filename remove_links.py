@@ -39,7 +39,7 @@ def clean_pdf(input_file_path, output_file_name):
             media_box = new_page.mediabox
             original_height = float(media_box.top)
             original_width = float(media_box.right)
-            header_height = original_height * 0.15  # 15% of page height
+            header_height = original_height * 0.12  # 10% of page height
             
             logger.debug(f"Original dimensions - Height: {original_height}, Width: {original_width}")
             logger.debug(f"Calculated header height: {header_height}")
