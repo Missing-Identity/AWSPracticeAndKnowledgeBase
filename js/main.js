@@ -5,6 +5,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+// Get the base path for GitHub Pages
+function getBasePath() {
+  return "/AWSPracticeAndKnowledgeBase";
+}
+
 // Predefined colors for sections
 const SECTION_COLORS = [
   "#4285f4", // Google Blue
@@ -20,16 +25,16 @@ const SECTION_COLORS = [
 ];
 
 async function getSectionColor(index) {
-  // Use modulo to cycle through colors if we have more sections than colors
   return SECTION_COLORS[index % SECTION_COLORS.length];
 }
 
 async function loadDocumentations() {
   const docsContainer = document.querySelector(".docs-container");
+  const basePath = getBasePath();
 
   try {
     // Get the list of directories in assets/docs
-    const response = await fetch("../assets/docs/");
+    const response = await fetch(`${basePath}/assets/docs/`);
     const text = await response.text();
 
     // Create a temporary element to parse the HTML response
@@ -46,7 +51,9 @@ async function loadDocumentations() {
     const sections = await Promise.all(
       folders.map(async (folderName, index) => {
         // Get list of PDFs in the folder
-        const folderResponse = await fetch(`../assets/docs/${folderName}/`);
+        const folderResponse = await fetch(
+          `${basePath}/assets/docs/${folderName}/`
+        );
         const folderText = await folderResponse.text();
         const folderDoc = parser.parseFromString(folderText, "text/html");
 
@@ -70,17 +77,18 @@ async function loadDocumentations() {
   } catch (error) {
     console.error("Error loading documentations:", error);
     docsContainer.innerHTML = `
-            <div class="error-message">
-                <p>Error loading documentation. Please try again later.</p>
-                <p class="error-details">${error.message}</p>
-            </div>
-        `;
+      <div class="error-message">
+        <p>Error loading documentation. Please try again later.</p>
+        <p class="error-details">${error.message}</p>
+      </div>
+    `;
   }
 }
 
 function createSectionCard(section) {
   const card = document.createElement("div");
   card.className = "section-card";
+  const basePath = getBasePath();
 
   // Create header with section name
   const header = document.createElement("div");
@@ -104,7 +112,7 @@ function createSectionCard(section) {
     section.pdfs.forEach((pdf) => {
       const li = document.createElement("li");
       const link = document.createElement("a");
-      link.href = `../assets/docs/${section.name}/${pdf}`;
+      link.href = `${basePath}/assets/docs/${section.name}/${pdf}`;
       link.target = "_blank";
       link.innerHTML = `<i class="fas fa-file-pdf" style="color: ${section.color}"></i> ${pdf}`;
       li.appendChild(link);
