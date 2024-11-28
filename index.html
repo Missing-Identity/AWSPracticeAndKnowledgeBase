@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AWS Learning Portfolio - Unmilan</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-content">
+        <a href="index.html" class="logo">Unmilan</a>
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li>
+            <a href="pages/documentation.html">Notes & Documentation</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="notification-popup">
+      <div class="notification-text">
+        Psst, if you wanna get your hands on some notes and documentation
+        written by me, click here!
+      </div>
+    </div>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <img
+            src="assets/images/profile.jpg"
+            alt="Profile Picture"
+            class="profile-pic"
+          />
+          <h1>Hi, I'm Unmilan</h1>
+          <p class="subtitle">Software Developer | AWS Cloud Enthusiast</p>
+          <p class="description">
+            Welcome to my AWS learning portfolio. This platform chronicles my
+            exploration of AWS services and cloud computing projects. I am
+            deeply committed to Machine Learning, Artificial Intelligence, and
+            Cloud Architecture and Development. I continuously seek to expand my
+            knowledge and expertise in AWS technologies, while exploring the
+            synergy between AI and cloud solutions. My goal is to integrate
+            these fields to drive innovation and create impactful solutions.
+          </p>
+          <div class="social-links">
+            <a href="https://github.com/Missing-Identity" target="_blank"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/unmilan-mukherjee-a549a4190/"
+              target="_blank"
+              ><i class="fab fa-linkedin"></i
+            ></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills">
+        <h2>Skills & Technologies</h2>
+        <div class="skills-container">
+          <div class="skill-category">
+            <h3 class="skill-category-title">Cloud & DevOps</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <i class="fab fa-aws"></i>
+                <h3>AWS Cloud</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-cloud"></i>
+                <h3>Cloud Computing</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-cogs"></i>
+                <h3>DevOps</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">AI & Machine Learning</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <i class="fas fa-brain"></i>
+                <h3>Artificial Intelligence</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-robot"></i>
+                <h3>Machine Learning</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-code"></i>
+                <h3>Python</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Backend Development</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <i class="fas fa-server"></i>
+                <h3>Backend Development</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-flask"></i>
+                <h3>Flask</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <h3>MongoDB</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-database"></i>
+                <h3>SQL</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-plug"></i>
+                <h3>REST APIs</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-code-branch"></i>
+                <h3>Selenium</h3>
+              </div>
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="skill-category-title">Frontend & Design</h3>
+            <div class="skills-grid">
+              <div class="skill-card">
+                <i class="fas fa-desktop"></i>
+                <h3>Front-End Development</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-paint-brush"></i>
+                <h3>Graphic Design</h3>
+              </div>
+              <div class="skill-card">
+                <i class="fas fa-image"></i>
+                <h3>Photoshop</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Unmilan. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const notificationPopup = document.querySelector(".notification-popup");
+
+        // Show after 5 seconds
+        setTimeout(() => {
+          notificationPopup.classList.add("show");
+        }, 5000);
+
+        // Hide after 11 seconds (5 seconds delay + 6 seconds display)
+        setTimeout(() => {
+          notificationPopup.classList.remove("show");
+        }, 11000);
+      });
+    </script>
+  </body>
+</html>

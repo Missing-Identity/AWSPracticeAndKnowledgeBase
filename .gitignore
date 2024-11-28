@@ -1,2 +1,5 @@
 .venv
 AWS Personal Project Docs
+node_modules/
+.DS_Store
+*.log
