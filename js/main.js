@@ -33,41 +33,22 @@ async function loadDocumentations() {
   const basePath = getBasePath();
 
   try {
-    // Get the list of directories in assets/docs
-    const response = await fetch(`${basePath}/assets/docs/`);
-    const text = await response.text();
-
-    // Create a temporary element to parse the HTML response
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(text, "text/html");
-
-    // Get all folder links (they end with /)
-    const folders = Array.from(doc.querySelectorAll("a"))
-      .filter((a) => a.href.endsWith("/"))
-      .map((a) => a.textContent.replace("/", ""))
-      .filter((name) => name !== ".." && name !== "."); // Remove parent directory links
-
-    // Create sections from folders
-    const sections = await Promise.all(
-      folders.map(async (folderName, index) => {
-        // Get list of PDFs in the folder
-        const folderResponse = await fetch(
-          `${basePath}/assets/docs/${folderName}/`
-        );
-        const folderText = await folderResponse.text();
-        const folderDoc = parser.parseFromString(folderText, "text/html");
-
-        const pdfs = Array.from(folderDoc.querySelectorAll("a"))
-          .filter((a) => a.href.toLowerCase().endsWith(".pdf"))
-          .map((a) => a.textContent);
-
-        return {
-          name: folderName,
-          color: await getSectionColor(index),
-          pdfs: pdfs,
-        };
-      })
-    );
+    // Create sections manually based on the directory structure
+    const sections = [
+      {
+        name: "AWS Cloud",
+        color: SECTION_COLORS[0],
+        pdfs: [
+          "AWS Data Analytics and Visualization using QuickSight.pdf",
+          "AWS IAM Groups and EC2 instance basics.pdf",
+          "Building a Basic Chatbot with Amazon Lex - Part-1.pdf",
+          "Building a Basic Chatbot with Amazon Lex - Part-2.pdf",
+          "Building a Basic Chatbot with Amazon Lex - Part-3.pdf",
+          "Hosting a Static Website on AWS S3.pdf",
+          "Netflix Analysis Dashboard.pdf",
+        ],
+      },
+    ];
 
     // Create and append section cards
     sections.forEach((section) => {
@@ -112,7 +93,11 @@ function createSectionCard(section) {
     section.pdfs.forEach((pdf) => {
       const li = document.createElement("li");
       const link = document.createElement("a");
-      link.href = `${basePath}/assets/docs/${section.name}/${pdf}`;
+      // Use encodeURIComponent to handle spaces and special characters in the path
+      const encodedPath = `${basePath}/assets/docs/${encodeURIComponent(
+        section.name
+      )}/${encodeURIComponent(pdf)}`;
+      link.href = encodedPath;
       link.target = "_blank";
       link.innerHTML = `<i class="fas fa-file-pdf" style="color: ${section.color}"></i> ${pdf}`;
       li.appendChild(link);
