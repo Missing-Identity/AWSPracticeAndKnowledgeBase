@@ -58,7 +58,7 @@ def clean_pdf(input_file_path, output_file_name):
             logger.info(f"Added modified page {i+1} to output")
 
         # Write the output file
-        output_path = f"AWS Personal Project Docs/{output_file_name}.pdf"
+        output_path = f"assets/docs/AWS Cloud/{output_file_name}.pdf"
         logger.info(f"Writing output to: {output_path}")
         with open(output_path, "wb") as output_file:
             writer.write(output_file)
