@@ -47,7 +47,7 @@ def process_folder():
     Process all PDFs in the original folder and create compressed versions.
     """
     # Define paths
-    original_folder = "AWS Personal Project Docs"
+    original_folder = "assets\docs\AWS Cloud"
     compressed_folder = "AWS Docs Compressed"
     
     # Create compressed folder if it doesn't exist
