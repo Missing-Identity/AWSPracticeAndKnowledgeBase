@@ -48,6 +48,7 @@ async function loadDocumentations() {
           "Building a Basic Chatbot with Amazon Lex - Part-5.pdf",
           "Creating an AWS Aurora Database and linking it to EC2.pdf",
           "Hosting a Static Website on AWS S3.pdf",
+          "Linking AWS Aurora to an EC2 instance and hosting a simple web app.pdf",
           "Netflix Analysis Dashboard.pdf",
           "Using AWS RDS.pdf",
         ],
